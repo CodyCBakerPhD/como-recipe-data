@@ -24,15 +24,3 @@ repos:
       - id: codespell
         additional_dependencies:
         - tomli
-
-  - repo: local
-    hooks:
-      - id: generate_html
-        name: Generate HTML Recipes
-        description: Generate HTML recipes from YAML files
-        entry: generate_html_recipes
-        files: ^docs/recipes|docs/ingredients
-        types: [file]
-        language: system
-        args: []
-        pass_filenames: false
