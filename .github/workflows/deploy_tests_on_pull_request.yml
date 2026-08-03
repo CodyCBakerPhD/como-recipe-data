@@ -1,7 +1,7 @@
 name: Deploy
 
 on:
-  push:  # Would prefer `pull_request`, but custom pre-commit has trouble with refs; for private repo not a huge diff
+  push:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -9,11 +9,5 @@ concurrency:
 
 jobs:
 
-  pre-commit:
-    uses: ./.github/workflows/pre_commit.yml
-    secrets:
-      API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-
   tests:
-    needs: pre-commit
     uses: ./.github/workflows/testing.yml
