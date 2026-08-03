@@ -24,7 +24,7 @@ class _DefaultRecipeRegistry(RecipeRegistry):
         self._manifest_types = ["ingredients", "recipes"]
         self._current_manifest_hashes = {}
         for manifest_type in self._manifest_types:
-            manifest_hash_url = f"https://codycbakerphd.github.io/como_recipes/manifests/{manifest_type}_hash.txt"
+            manifest_hash_url = f"https://comorecipes.codycbakerphd.com/manifests/{manifest_type}_hash.txt"
             self._current_manifest_hashes[manifest_type] = request_content(url=manifest_hash_url)
 
         update = False
@@ -58,7 +58,7 @@ class _DefaultRecipeRegistry(RecipeRegistry):
 
         if update is True:
             for manifest_type in self._manifest_types:
-                manifest_url = f"https://codycbakerphd.github.io/como_recipes/manifests/{manifest_type}.yaml"
+                manifest_url = f"https://comorecipes.codycbakerphd.com/manifests/{manifest_type}.yaml"
                 manifest_content = request_content(url=manifest_url)
                 manifest = yaml.safe_load(stream=manifest_content)
 
@@ -73,7 +73,7 @@ class _DefaultRecipeRegistry(RecipeRegistry):
                             continue
 
                     # TODO: could also be more efficient to make this step async
-                    item_url = f"https://codycbakerphd.github.io/como_recipes/{manifest_type}/{item_name}.yaml"
+                    item_url = f"https://comorecipes.codycbakerphd.com/{manifest_type}/{item_name}.yaml"
                     item_content = request_content(url=item_url)
                     item_file_path.write_text(data=item_content)
 
