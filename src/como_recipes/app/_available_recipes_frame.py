@@ -32,9 +32,9 @@ class AvailableRecipesFrame(tkinter.Frame):
         self.minimum_available_recipe_width_in_characters = minimum_available_recipe_width_in_characters
         self.minimum_number_of_displayed_available_recipes = minimum_number_of_displayed_available_recipes
 
-        self.restricted_types = {tag: True for tag in cuisines}
+        self.restricted_types = dict.fromkeys(cuisines, True)
         if self.recipe_type is not None:
-            self.restricted_types.update({tag: True for tag in recipe_types})
+            self.restricted_types.update(dict.fromkeys(recipe_types, True))
         self.label_text = f"Available {recipe_type}s" if recipe_type is not None else "Available meals"
 
         self.tags = tuple(set(all_default_tags) - set(recipe_types))

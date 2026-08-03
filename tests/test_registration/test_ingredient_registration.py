@@ -9,7 +9,7 @@ import como_recipes
 def test_get_ingredient_error():
     new_registry = como_recipes.IngredientRegistry()
 
-    with pytest.raises(ValueError, match="Ingredient 'Unregistered' not found in the registry."):
+    with pytest.raises(ValueError, match=r"Ingredient 'Unregistered' not found in the registry."):
         new_registry.get_ingredient(ingredient_name="Unregistered")
 
 

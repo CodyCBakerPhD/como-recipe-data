@@ -54,6 +54,11 @@ class Meal(pydantic.BaseModel):
             return False
         return True
 
+    def __hash__(self) -> int:
+        """Meals are mutable (recipes may be added after construction), so hashing is intentionally unsupported."""
+        message = "Meal is mutable and therefore does not support hashing."
+        raise TypeError(message)
+
     def __repr__(self) -> str:
         """Used in programmatic places, such as equality assertions in the tests."""
         recipe_names = get_recipe_names_by_type(recipes=list(self._recipe_name_to_recipe.values()))
@@ -169,6 +174,6 @@ class Meal(pydantic.BaseModel):
         }
 
         meal = Meal(quantity_multiplier=dictionary["quantity_multiplier"])
-        meal._recipe_name_to_recipe = recipe_name_to_recipe  # noqa: SLF001
+        meal._recipe_name_to_recipe = recipe_name_to_recipe
 
         return meal

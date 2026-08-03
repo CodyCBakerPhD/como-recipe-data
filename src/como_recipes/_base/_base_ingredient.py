@@ -57,6 +57,10 @@ class Ingredient(pydantic.BaseModel):
 
         return result
 
+    def __hash__(self) -> int:
+        """Consistent with `__eq__`; hashes the same fields used for equality comparison."""
+        return hash((self.name, self.default_grams_per_package, self.default_package_unit))
+
     @pydantic.validate_call
     def get_number_of_packages(self, *, amount_in_grams: int | float) -> int:
         """Convert the amount of this ingredient to the default package size."""
@@ -64,7 +68,7 @@ class Ingredient(pydantic.BaseModel):
             message = "The default size or unit of packages containing this ingredient is not specified."
             raise NotImplementedError(message)
 
-        return int(math.ceil(amount_in_grams / self.default_grams_per_package))
+        return math.ceil(amount_in_grams / self.default_grams_per_package)
 
     @pydantic.validate_call
     def to_yaml_file(self, *, file_path: pydantic.NewPath | pydantic.FilePath) -> None:

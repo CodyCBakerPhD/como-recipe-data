@@ -27,7 +27,7 @@ def test_get_raw_measurement_list_empty_error():
 
     with pytest.raises(
         expected_exception=ValueError,
-        match="No meals or measurements have been added to the meal selection.",
+        match=r"No meals or measurements have been added to the meal selection.",
     ):
         meal_selection.get_raw_measurement_list()
 

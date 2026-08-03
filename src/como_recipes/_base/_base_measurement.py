@@ -79,3 +79,7 @@ class Measurement(pydantic.BaseModel):
         result = all(getattr(self, field) == getattr(other, field) for field in fields_to_compare)
 
         return result
+
+    def __hash__(self) -> int:
+        """Consistent with `__eq__`; hashes the same fields used for equality comparison."""
+        return hash((self.amount, self.unit, self.ingredient))
