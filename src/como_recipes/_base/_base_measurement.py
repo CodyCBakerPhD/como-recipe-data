@@ -79,3 +79,5 @@ class Measurement(pydantic.BaseModel):
         result = all(getattr(self, field) == getattr(other, field) for field in fields_to_compare)
 
         return result
+
+    __hash__ = None

@@ -201,7 +201,7 @@ class Recipe(pydantic.BaseModel):
 
             recipe_info["measurements"] = tuple(
                 IngredientRegistry.get_measurement(
-                    amount=amount if (amount := measurement["amount"]) != "enough" else amount,
+                    amount=measurement["amount"],
                     unit=measurement.get("unit", None),
                     ingredient_name=measurement["ingredient"],
                     prefix=measurement.get("prefix", None),

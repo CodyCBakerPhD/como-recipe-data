@@ -54,6 +54,8 @@ class Meal(pydantic.BaseModel):
             return False
         return True
 
+    __hash__ = None
+
     def __repr__(self) -> str:
         """Used in programmatic places, such as equality assertions in the tests."""
         recipe_names = get_recipe_names_by_type(recipes=list(self._recipe_name_to_recipe.values()))

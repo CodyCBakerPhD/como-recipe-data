@@ -70,5 +70,5 @@ def test_recipe_registry(example_1_folder_path: pathlib.Path):
 def test_get_recipe_error():
     new_registry = RecipeRegistry()
 
-    with pytest.raises(ValueError, match="Recipe 'Unregistered' not found in the registry."):
+    with pytest.raises(ValueError, match=r"Recipe 'Unregistered' not found in the registry."):
         new_registry.get_recipe(recipe_name="Unregistered")
