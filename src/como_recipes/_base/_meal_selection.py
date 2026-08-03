@@ -532,8 +532,8 @@ class MealSelection(pydantic.BaseModel):
         }
 
         meal_selector = MealSelection()
-        meal_selector._individual_measurements_to_add = individual_measurements_to_add  # noqa: SLF001
-        meal_selector._individual_measurements_to_remove = individual_measurements_to_remove  # noqa: SLF001
-        meal_selector._recipe_names_to_meal = recipe_names_to_meal  # noqa: SLF001
+        meal_selector._individual_measurements_to_add = individual_measurements_to_add
+        meal_selector._individual_measurements_to_remove = individual_measurements_to_remove
+        meal_selector._recipe_names_to_meal = recipe_names_to_meal
 
         return meal_selector

@@ -169,6 +169,6 @@ class Meal(pydantic.BaseModel):
         }
 
         meal = Meal(quantity_multiplier=dictionary["quantity_multiplier"])
-        meal._recipe_name_to_recipe = recipe_name_to_recipe  # noqa: SLF001
+        meal._recipe_name_to_recipe = recipe_name_to_recipe
 
         return meal

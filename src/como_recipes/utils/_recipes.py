@@ -31,7 +31,7 @@ def get_recipe_name_hierarchy(
         if any(values) is False:
             continue
 
-        organized_recipe_names.update({value: True for value in values})
+        organized_recipe_names.update(dict.fromkeys(values, True))
 
         hierarchy[recipe_type] = values
 
