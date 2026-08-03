@@ -80,4 +80,6 @@ class Measurement(pydantic.BaseModel):
 
         return result
 
-    __hash__ = None
+    def __hash__(self) -> int:
+        """Consistent with `__eq__`; hashes the same fields used for equality comparison."""
+        return hash((self.amount, self.unit, self.ingredient))

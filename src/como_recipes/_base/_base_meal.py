@@ -54,7 +54,10 @@ class Meal(pydantic.BaseModel):
             return False
         return True
 
-    __hash__ = None
+    def __hash__(self) -> int:
+        """Meals are mutable (recipes may be added after construction), so hashing is intentionally unsupported."""
+        message = "Meal is mutable and therefore does not support hashing."
+        raise TypeError(message)
 
     def __repr__(self) -> str:
         """Used in programmatic places, such as equality assertions in the tests."""

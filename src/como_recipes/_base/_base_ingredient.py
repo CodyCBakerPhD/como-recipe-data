@@ -57,7 +57,9 @@ class Ingredient(pydantic.BaseModel):
 
         return result
 
-    __hash__ = None
+    def __hash__(self) -> int:
+        """Consistent with `__eq__`; hashes the same fields used for equality comparison."""
+        return hash((self.name, self.default_grams_per_package, self.default_package_unit))
 
     @pydantic.validate_call
     def get_number_of_packages(self, *, amount_in_grams: int | float) -> int:
